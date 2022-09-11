@@ -7,7 +7,6 @@
     "start": "webpack --watch",
     "build": "webpack"
   },
-  "types": "dist/index.d.js",
   "dependencies": {
     "@monaco-editor/react": "^4.4.5",
     "@testing-library/jest-dom": "^5.16.5",
