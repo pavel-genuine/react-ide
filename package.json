@@ -3,7 +3,7 @@
   "version": "2.4.0",
   "main": "./src/index.js",
   "scripts": {
-    "build": " babel src/index --out-dir dist --copy-files"
+    "build": " babel src/index.js --out-dir dist --copy-files"
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
