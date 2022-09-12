@@ -1,13 +1,12 @@
 {
   "name": "ide-react",
-  "version": "2.2.0",
-  "main": "./index.js",
+  "version": "2.1.0",
+  "main": "./src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack --watch",
-    "build": "webpack"
+    "build": " babel src/components --out-dir dist --copy-files"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
     "@monaco-editor/react": "^4.4.5",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -45,6 +44,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/cli": "^7.18.10",
+    "@babel/core": "^7.19.0",
+    "@babel/preset-env": "^7.19.0",
     "@monaco-editor/react": "^4.4.5",
     "@rollup/plugin-commonjs": "^22.0.2",
     "@rollup/plugin-node-resolve": "^14.0.1",
