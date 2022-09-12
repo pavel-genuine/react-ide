@@ -1,6 +1,6 @@
 {
   "name": "ide-react",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "main": "./src/index.js",
   "scripts": {
     "build": " babel src --out-dir dist --copy-files"
