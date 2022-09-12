@@ -1,7 +1,7 @@
 {
-  "name": "ide-react",
+  "name": "react-ide",
   "version": "2.6.0",
-  "main": "./src/index.js",
+  "main": "./build/index.js",
   "scripts": {
     "build": " babel src --out-dir dist --copy-files"
   },
@@ -40,7 +40,7 @@
       "last 1 safari version"
     ]
   },
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "description": "",
   "author": "",
   "license": "ISC",
   "devDependencies": {
