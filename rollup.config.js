@@ -1,56 +1,41 @@
-import nodeResolve from "@rollup/plugin-node-resolve";
-import replace from "@rollup/plugin-replace";
-import commonjs from "@rollup/plugin-commonjs";
-import babel from "@rollup/plugin-babel";
+import resolve from "@rollup/plugin-node-resolve";
 import { terser } from "rollup-plugin-terser";
-
-const defaultNodeResolveConfig = {};
-const nodeResolvePlugin = nodeResolve(defaultNodeResolveConfig);
-
-const commonPlugins = [
-  nodeResolvePlugin,
-  babel.default({
-    presets: [
-      ["@babel/preset-env", { targets: "> 2%, not dead" }],
-      "@babel/preset-react",
-    ],
-    babelHelpers: "bundled",
-  }),
-  commonjs(),
-];
-
-const developmentPlugins = [
-  ...commonPlugins,
-  replace({
-    "process.env.NODE_ENV": JSON.stringify("development"),
-  }),
-];
-
-const productionPlugins = [
-  ...commonPlugins,
-  replace({
-    "process.env.NODE_ENV": JSON.stringify("production"),
-  }),
-  terser({ mangle: false }),
-];
-
-const external = ["@monaco-editor/loader", "react", "prop-types"];
-const globalsForUMD = {
-  react: "React",
-  "prop-types": "PropTypes",
-  "@monaco-editor/loader": "monaco_loader",
-};
+import postcss from "rollup-plugin-postcss";
+import commonjs from "rollup-plugin-commonjs";
+import babel from "rollup-plugin-babel";
+import json from "@rollup/plugin-json";
+import react from "react";
+import reactDom from "react-dom";
 
 export default [
   {
     input: "src/index.js",
-    external,
-    output: {
-      exports: "named",
-      dir: "lib/cjs/",
-      format: "cjs",
-      preserveModules: true,
-    },
-    plugins: commonPlugins,
+    output: [
+      {
+        dir: "dist/cjs",
+        format: "cjs",
+      },
+    ],
+    plugins: [
+      postcss({
+        plugins: [],
+        minimize: true,
+      }),
+      resolve(),
+      terser(),
+
+      commonjs({
+        include: /node_modules/,
+        namedExports: {
+          react: Object.keys(react),
+          "react-dom": Object.keys(reactDom),
+        },
+      }),
+      json(),
+      babel({
+        exclude: "node_modules/**",
+        presets: ["@babel/env", "@babel/preset-react"],
+      }),
+    ],
   },
 ];
