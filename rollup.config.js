@@ -6,6 +6,7 @@ import babel from "rollup-plugin-babel";
 import json from "@rollup/plugin-json";
 import react from "react";
 import reactDom from "react-dom";
+import nodePolyfills from "rollup-plugin-node-polyfills";
 
 export default [
   {
@@ -17,6 +18,7 @@ export default [
       },
     ],
     plugins: [
+      nodePolyfills(),
       postcss({
         plugins: [],
         minimize: true,
