@@ -1,9 +1,9 @@
 {
   "name": "react-ide",
   "version": "2.8.0",
-  "main": "./build/index.js",
+  "main": "lib/cjs/index.js",
   "scripts": {
-    "build": " babel src --out-dir dist --copy-files"
+    "build": "rollup -c  "
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
@@ -49,7 +49,7 @@
     "@babel/preset-env": "^7.19.0",
     "@monaco-editor/react": "^4.4.5",
     "@rollup/plugin-commonjs": "^22.0.2",
-    "@rollup/plugin-node-resolve": "^14.0.1",
+    "@rollup/plugin-node-resolve": "^14.1.0",
     "@rollup/plugin-typescript": "^8.5.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
